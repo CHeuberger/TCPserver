@@ -1,0 +1,8 @@
+/build/
+/classes/
+/.settings/
+hs_err_pid*
+*.class
+*.swp
+*.bak
+*~

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     19.04.2008                                                        
+
+     TCPserver    
+     Helper classes to handle TCP connections.
+                   
+     Carlos F. Heuberger                                                                
+     ====================================================================== -->
+<project name="TCPserver" default="dist" basedir=".">
+    <description>
+            Helper classes to handle TCP connections.
+    </description>
+    
+    <property file="build.properties" />
+    
+
+    <target name="-init">
+        <tstamp />
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${classes.dir}" />
+        <mkdir dir="${dist.dir}" />
+    </target>
+
+
+    <target name="clean" description="Remove generated files and directories.">
+        <delete dir="${classes.dir}" />
+        <delete dir="${build.dir}" />
+    </target>
+
+    
+    <target name="dist" depends="jar,srcjar" description="Makes distributions.">
+    </target>
+    
+    
+    <target name="jar" depends="compile" description="Create JAR.">
+        <jar 
+            destfile="${jar.file}" 
+            basedir="${classes.dir}"
+            manifest="manifest.txt">
+        </jar>
+    </target>
+    
+    
+    <target name="srcjar" depends="compile" description="Create JAR.">
+        <jar destfile="${srcjar.file}" filesonly="true">
+            <manifest>
+                <attribute name="Implementation-Vendor"
+                           value="Carlos F. Heuberger" />
+            </manifest>
+            <fileset dir="${basedir}" includes="src/**" />
+            <fileset dir="${basedir}" includes="test/**" />
+            <fileset dir="${basedir}" includes="/*" />
+        </jar>
+    </target>
+    
+    
+    <target name="compile" depends="-init" description="Compile the sources.">
+        <javac 
+            srcdir="${src.dir}" 
+            destdir="${classes.dir}" 
+            debug="${debug.flag}"
+            deprecation="${deprecation.flag}">
+        </javac>
+    </target>
+
+</project>
