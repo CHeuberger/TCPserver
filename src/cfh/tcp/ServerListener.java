@@ -45,16 +45,24 @@ public interface ServerListener {
     
     public class Adapter implements ServerListener {
         
+        @Override
         public void started(Server server) {
+            //
         }
 
+        @Override
         public void connected(Server server, Connection connection) {
+            //
         }
 
+        @Override
         public void handleException(Server server, Exception ex) {
+            //
         }
 
+        @Override
         public void shutdown(Server server) {
+            //
         }
     }
 }

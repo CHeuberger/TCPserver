@@ -229,6 +229,7 @@ public class ConnectionTest {
         
         Future<Socket> start() {
             Callable<Socket> waiter = new Callable<Socket>() {
+                @Override
                 public Socket call() throws Exception {
                     return waitConnection();
                 }
@@ -287,18 +288,23 @@ public class ConnectionTest {
             assertEquals("Shutdown", shutdown, wasShutdown);
         }
         
+        @Override
         public void handleException(Connection connection, Exception ex) {
             exceptions.add(ex);
         }
+        @Override
         public void receivedData(Connection connection, byte[] data) {
             received.add(data);
         }
+        @Override
         public void sentData(Connection connection, byte[] data) {
             sent.add(data);
         }
+        @Override
         public void started(Connection connection) {
             wasStarted = true;
         }
+        @Override
         public void shutdown(Connection connection) {
             wasShutdown = true;
         }

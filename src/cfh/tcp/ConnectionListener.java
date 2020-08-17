@@ -29,19 +29,29 @@ public interface ConnectionListener {
     
     public class Adapter implements ConnectionListener {
         
+        @Override
         public void started(Connection connection) {
+            //
         }
 
+        @Override
         public void receivedData(Connection connection, byte[] data) {
+            //
         }
 
+        @Override
         public void sentData(Connection connection, byte[] data) {
+            //
         }
         
+        @Override
         public void handleException(Connection connection, Exception ex) {
+            //
         }
 
+        @Override
         public void shutdown(Connection connection) {
+            //
         }
     }
 }
